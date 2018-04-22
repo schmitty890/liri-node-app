@@ -35,12 +35,11 @@ function getTweets() {
   	tweets.forEach(function(element) {
   		var time = element.created_at,
   				//get month day and year out of the time variable
-  				month = moment().month(time.substr(4,3)).format("MM");
+  				month = moment().month(time.substr(4,3)).format("MM"); // format month as digit (ex. Jan will convert to 01)
   				day = time.substr(8, 2),
   				year = time.substr(-4),
   				userName = element.user.name,
   				tweet = element.full_text;
-			// month = moment().month(month).format("MM"); // format month as digit (ex. Jan will convert to 01)
 			var theDate = year + month + day;
 			theDate = moment(theDate, "YYYYMMDD").fromNow(); // format the date
 			var data = {

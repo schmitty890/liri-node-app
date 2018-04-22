@@ -14,7 +14,7 @@ var spotifyKeys = {
 }
 
 var ombdKey = {
-	key: "00000000"
+	key: "00000000" // OMBD api requires you to pay for it at this time, so we use the trilogy api key. this is just a placeholder
 }
 
 module.exports = {
