@@ -28,12 +28,12 @@ switch(command) { // run the appropriate command per the user input
  */
 function getTweets() {
 	console.log(`FETCHING TWEETS`);
-  client.get('statuses/user_timeline', {count: 20, tweet_mode: 'extended'}, function(err, tweets, response) {
-  	if(err) {
-  		return console.log(`error with my-tweets: ${err}`);
-  	}
-  	tweets.forEach(function(element) {
-  		var time = element.created_at,
+	client.get('statuses/user_timeline', {count: 20, tweet_mode: 'extended'}, function(err, tweets, response) {
+		if(err) {
+			return console.log(`error with my-tweets: ${err}`);
+		}
+		tweets.forEach(function(element) {
+			var time = element.created_at,
 				//get month day and year out of the time variable
 				month = moment().month(time.substr(4,3)).format("MM"); // format month as digit (ex. Jan will convert to 01)
 				day = time.substr(8, 2),
@@ -45,25 +45,25 @@ function getTweets() {
 			var data = {
 				"Tweet": `${userName} posted ${theDate}: ${tweet}`
 			}
-  		logData(data);
-  	});
-  });
+			logData(data);
+		});
+	});
 }
 
 /**
  * [getSpotify calls spotify and logs out information about a song specified]
  */
 function getSpotify(input) {
-  var songLength = Object.keys(input).length;
-  if(songLength === 0) {
-  	input = "It's my life";
-  }
+	var songLength = Object.keys(input).length;
+	if(songLength === 0) {
+		input = "It's my life";
+	}
 
-  console.log(`FETCHING SONG: ${input}`);
+	console.log(`FETCHING SONG: ${input}`);
 	spotify.search({ type: 'track', query: input, limit: 1 }, function(err, data) {
-	  if (err) {
-	    return console.log(`Error occurred: ${err}`);
-	  }
+		if (err) {
+			return console.log(`Error occurred: ${err}`);
+		}
 		// console.log(data);
 		var songData = data.tracks.items[0],
 			releaseDate = moment(songData.album.release_date, "YYYYMMDD").fromNow(), // Release date
@@ -88,35 +88,35 @@ function getSpotify(input) {
  * [getMovie get information about a movie input from the user]
  */
 function getMovie(userInput) {
-  var movieLength = Object.keys(userInput).length;
-  if(movieLength === 0) {
-  	userInput = "Mr. Nobody";
-  }
-  console.log(`FETCHING MOVIE: ${userInput}`);
-  request(`http://www.omdbapi.com/?apikey=trilogy&t=${userInput}`, function(err, resp, body) {
-  	if(!err && resp.statusCode === 200) {
-	  	body = JSON.parse(body)
-	  	var title = body.Title,
-	  			year = body.Year,
-	  			rating = body.imdbRating,
-	  			rottenTomatoeRating = body.Ratings[1] ? body.Ratings[1].Value : 'Not Rated',
-	  			country = body.Country,
-	  			language = body.Language,
-	  			plot = body.Plot,
-	  			actors = body.Actors,
-	  			data = {
-			  		"Title": title,
-				  	"Year": year,
-				  	"Rating": rating,
-				  	"Rotten Tomatoe Rating": rottenTomatoeRating,
-				  	"Country": country,
-				  	"Language": language,
-				  	"Plot": plot,
-				  	"Actors": actors
-			  	};
-	  	logData(data);
-  	}
-  });
+	var movieLength = Object.keys(userInput).length;
+	if(movieLength === 0) {
+		userInput = "Mr. Nobody";
+	}
+	console.log(`FETCHING MOVIE: ${userInput}`);
+	request(`http://www.omdbapi.com/?apikey=trilogy&t=${userInput}`, function(err, resp, body) {
+		if(!err && resp.statusCode === 200) {
+			body = JSON.parse(body)
+			var title = body.Title,
+				year = body.Year,
+				rating = body.imdbRating,
+				rottenTomatoeRating = body.Ratings[1] ? body.Ratings[1].Value : 'Not Rated',
+				country = body.Country,
+				language = body.Language,
+				plot = body.Plot,
+				actors = body.Actors,
+				data = {
+					"Title": title,
+					"Year": year,
+					"Rating": rating,
+					"Rotten Tomatoe Rating": rottenTomatoeRating,
+					"Country": country,
+					"Language": language,
+					"Plot": plot,
+					"Actors": actors
+				};
+			logData(data);
+		}
+	});
 }
 
 /**
@@ -124,11 +124,11 @@ function getMovie(userInput) {
  */
 function justDoIt() {
 	fs.readFile("random.txt", "utf8", function(error, data) {
-	  if (error) {
-	    return console.log(error);
-	  }
-	  var songName = data.split(',');
-	  songName = songName[1];
+		if (error) {
+			return console.log(error);
+		}
+		var songName = data.split(',');
+		songName = songName[1];
 		getSpotify(songName);
 	});
 }
@@ -140,12 +140,12 @@ function logData(data) {
 	var table = cTable.getTable([data]);
 	console.log(table); // Log the data to the terminal (some data - specifically movie plots - have long strings, enlarge terminal to get the best formatted result)
 
-  fs.appendFile("log.txt", ',' + JSON.stringify(data, null, 2), function(err) {
-  	console.log('________________________');
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("Content added to log.txt");
-    }
-  });
+	fs.appendFile("log.txt", ',' + JSON.stringify(data, null, 2), function(err) {
+		console.log('________________________');
+		if (err) {
+			console.log(err);
+		} else {
+			console.log("Content added to log.txt");
+		}
+	});
 }

@@ -11,11 +11,11 @@ var spotifyKeys = {
 }
 
 var ombdKey = {
-	key: "00000000" // OMBD api requires you to pay for it at this time, so we use the trilogy api key. this is just a placeholder
+  key: "00000000" // OMBD api requires you to pay for it at this time, so we use the trilogy api key. this is just a placeholder
 }
 
 module.exports = {
-	twitterKeys: twitterKeys,
-	spotifyKeys: spotifyKeys,
-	ombdKey: ombdKey
+  twitterKeys: twitterKeys,
+  spotifyKeys: spotifyKeys,
+  ombdKey: ombdKey
 };

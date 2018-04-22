@@ -1,6 +1,6 @@
 # liri-node-app
 
-Liri is a node application that returns tweets, song and movie data.
+Liri is a terminal node application that returns tweets, song and movie data.
 
 ### Commands
 
