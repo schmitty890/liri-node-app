@@ -18,3 +18,11 @@ Liri is a terminal node application that returns tweets, song and movie data.
 
 All data is saved to log.txt.
 
+### npm packages used
+[console.table](https://www.npmjs.com/package/console.table)
+[dotenv](https://www.npmjs.com/package/dotenv)
+[fs](https://www.npmjs.com/package/fs)
+[moment](https://www.npmjs.com/package/moment)
+[node-spotify-api](https://www.npmjs.com/package/node-spotify-api)
+[request](https://www.npmjs.com/package/request)
+[twitter](https://www.npmjs.com/package/twitter)
