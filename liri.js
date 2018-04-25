@@ -1,4 +1,4 @@
-require("dotenv").config();
+var dotEnv = require("dotenv").config();
 // save required files/npm packages as variables
 var appKeys = require("./keys.js");
 var Twitter = require("twitter");
@@ -36,7 +36,7 @@ function getTweets() {
             var time = element.created_at,
                 //get month day and year out of the time variable
                 month = moment().month(time.substr(4, 3)).format("MM"); // format month as digit (ex. Jan will convert to 01)
-            day = time.substr(8, 2),
+                day = time.substr(8, 2),
                 year = time.substr(-4),
                 userName = element.user.name,
                 tweet = element.full_text;
