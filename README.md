@@ -5,6 +5,7 @@ Liri is a terminal node application that returns tweets, song and movie data.
 ### Installation
 
 `git clone` this repo
+
 run `npm install`
 
 You will need to create a `.env` file along with your API keys
