@@ -2,6 +2,15 @@
 
 Liri is a terminal node application that returns tweets, song and movie data.
 
+### Installation
+
+`git clone` this repo
+run `npm install`
+
+You will need to create a `.env` file along with your API keys
+Example
+![Screenshot](https://user-images.githubusercontent.com/16051859/39334862-83a2efd8-497e-11e8-812a-a73c38d49e7d.png)
+
 ### Commands
 
 `node liri.js my-tweets` - displays the last 20 tweets and when they were created at in your terminal/bash window.
